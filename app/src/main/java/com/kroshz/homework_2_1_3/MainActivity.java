@@ -96,10 +96,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mStartDate[0] > mEndDate[0]){
-                    Toast.makeText(MainActivity.this, "Ошибка", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ошибка. Дата окончания задачи меньше даты начала задачи", Toast.LENGTH_LONG).show();
                     mChooseStartDate.setText("Дата-время старта задачи:");
                     mChooseEndDate.setText("Дата-время окончания задачи:");
-                } else {
+                } else  if (mStartDate[0] == 0) {
+                    Toast.makeText(MainActivity.this, "Ошибка. Не выбрана дата начала задачи", Toast.LENGTH_LONG).show();
+                } else if (mEndDate[0] == 0)  {
+                    Toast.makeText(MainActivity.this, "Ошибка. Не выбрана дата окончания задачи", Toast.LENGTH_LONG).show();
+                }
+                else {
                     Toast.makeText(MainActivity.this, "старт: " + mStartDateTxt[0] + " окончаниe: " + mEndDateTxt[0], Toast.LENGTH_LONG).show();
                 }
             }
